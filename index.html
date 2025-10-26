@@ -1,385 +1,221 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Your Name]'s Research Lair</title>
-    <!-- Pixel Fonts from Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* * This 'image-rendering' trick is key to the pixel-perfect look.
-         * It stops the browser from blurring pixel art and fonts.
-        */
-        * {
-            image-rendering: -moz-crisp-edges;
-            image-rendering: -webkit-crisp-edges;
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kelsey Rook — PhD Research Portfolio</title>
+  <style>
+    /* Web 1.0 inspired retro-professional styling */
+    body {
+      background: repeating-linear-gradient(45deg, #f3f7ff 0 8px, #e8f0ff 8px 16px);
+      color: #0b2545;
+      font-family: "Courier New", Courier, monospace;
+      margin: 0;
+      padding: 24px;
+    }
+    .frame {
+      max-width: 980px;
+      margin: 0 auto;
+      border: 6px groove #cfe0ff;
+      background: #ffffff;
+      padding: 18px;
+      box-shadow: 6px 6px 0 rgba(11,37,69,0.08);
+    }
+    header {
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    header h1 {
+      margin: 6px 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+    header p.tag {
+      margin: 0;
+      color: #204a87;
+      font-size: 13px;
+    }
+    nav {
+      margin: 12px 0;
+      text-align: center;
+    }
+    nav a {
+      display: inline-block;
+      margin: 4px 8px;
+      padding: 6px 10px;
+      background: linear-gradient(#eaf3ff,#d8eaff);
+      border: 2px outset #b8d0ff;
+      color: #03306a;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover { box-shadow: inset 0 0 6px rgba(0,0,0,0.06); }
 
-        body {
-            /* Tiled dot background, just like melonland.net */
-            background-color: #2c3e50;
-            background-image: radial-gradient(#795548 1px, transparent 1px);
-            background-size: 15px 15px;
-            
-            /* 'Silkscreen' is great for readable pixel text */
-            font-family: 'Silkscreen', monospace;
-            color: #ecf0f1;
-            margin: 0;
-            padding: 0;
-            font-size: 14px;
-        }
+    .layout {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .left {
+      flex: 2;
+      background: #fbfeff;
+      padding: 12px;
+      border: 2px solid #e1efff;
+    }
+    .right {
+      flex: 1;
+      background: #fbfeff;
+      padding: 12px;
+      border: 2px solid #e1efff;
+      min-width: 220px;
+    }
 
-        h1, h2, h3, .box-header, #nav-header {
-            /* 'Press Start 2P' is for all-caps, blocky headers */
-            font-family: 'Press Start 2P', monospace;
-            text-shadow: 2px 2px 0px #222;
-        }
+    section h2 {
+      font-size: 18px;
+      margin: 6px 0 10px;
+      color: #07204b;
+      border-bottom: 2px dashed #d0e4ff;
+      padding-bottom: 6px;
+    }
 
-        a {
-            color: #f1c40f; /* Bright yellow links */
-            text-decoration: underline;
-        }
-        a:hover {
-            color: #e67e22; /* Bright orange hover */
-            background-color: #34495e;
-        }
+    .projects {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .project {
+      width: calc(50% - 10px);
+      border: 2px solid #dbeeff;
+      padding: 8px;
+      background: linear-gradient(#ffffff,#f6fbff);
+    }
+    .project img { width: 100%; height: auto; display:block; border:1px solid #d0e3ff; }
+    .meta { font-size: 12px; color: #06325a; margin-top: 6px; }
 
-        /* --- Main Page Wrapper --- */
-        #wrapper {
-            width: 900px;
-            margin: 20px auto;
-            border: 3px solid #ecf0f1;
-            background-color: #34495e;
-            /* Hard, blocky shadow instead of a soft blur */
-            box-shadow: 6px 6px 0px rgba(0,0,0,0.5);
-        }
+    .retro-marquee {
+      margin: 8px 0 14px;
+      padding: 6px;
+      background: repeating-linear-gradient(90deg,#fff8e6,#fff3d1 20px);
+      border: 2px solid #ffd27a;
+      color: #6b3c00;
+      font-weight: bold;
+    }
 
-        /* --- Header --- */
-        #header {
-            padding: 15px;
-            background-color: #8e44ad; /* Bright purple */
-            border-bottom: 3px solid #ecf0f1;
-            text-align: center;
-        }
-        #header h1 {
-            color: #f1c40f;
-            margin: 0;
-            font-size: 1.8em;
-        }
+    footer {
+      margin-top: 14px;
+      font-size: 13px;
+      text-align: center;
+      color: #174a6b;
+      border-top: 1px dotted #d1e7ff;
+      padding-top: 10px;
+    }
 
-        /* --- The essential MARQUEE! --- */
-        .marquee-bar {
-            background: #2c3e50;
-            color: #2ecc71; /* Green "matrix" text */
-            padding: 8px;
-            font-size: 12px;
-            border-bottom: 3px solid #ecf0f1;
-        }
+    /* small blinking cue (Web1.0 vibe) */
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+    .blink { animation: blink 1.2s infinite; color:#b30000; font-weight:bold; }
 
-        /* --- Main Layout Container --- */
-        #container {
-            display: flex;
-            padding: 15px;
-        }
-
-        /* --- Columns --- */
-        #main-content {
-            flex: 3; /* 75% width */
-            margin-right: 15px;
-        }
-        #sidebar {
-            flex: 1; /* 25% width */
-        }
-
-        /* --- The "Window" Box Style --- */
-        .box {
-            border: 3px solid #ecf0f1;
-            background-color: #4a637c;
-            margin-bottom: 15px;
-            box-shadow: 4px 4px 0px rgba(0,0,0,0.3);
-        }
-        
-        /* The "Title Bar" of the window */
-        .box-header {
-            background-color: #16a085; /* Teal */
-            border-bottom: 3px solid #ecf0f1;
-            padding: 10px;
-            color: #fff;
-            font-size: 1em;
-        }
-        
-        .box-content {
-            padding: 15px;
-            line-height: 1.8;
-        }
-
-        /* --- Specific Content Styling --- */
-        .project-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .project-list li {
-            border-bottom: 2px dashed #34495e;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
-        }
-        .project-list h3 {
-            font-size: 0.9em;
-            color: #f1c40f;
-            margin: 0 0 5px 0;
-        }
-        .project-list p {
-            margin: 0 0 8px 0;
-        }
-
-        /* Pixel CV Button */
-        .cv-button {
-            display: inline-block;
-            background-color: #e74c3c; /* Bright red */
-            color: #fff;
-            padding: 12px 20px;
-            text-decoration: none;
-            border: 3px solid #ecf0f1;
-            box-shadow: 3px 3px 0px #2c3e50;
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.8em;
-            text-shadow: 2px 2px 0px #c0392b;
-        }
-        .cv-button:hover {
-            background-color: #c0392b;
-            color: #fff;
-        }
-
-        /* --- Sidebar --- */
-        #profile-pic {
-            width: 100%;
-            border: 3px solid #ecf0f1;
-            box-sizing: border-box; /* Ensures border doesn't add to width */
-        }
-        .profile-stat {
-            margin-bottom: 10px;
-        }
-        .profile-stat strong {
-            color: #1abc9c;
-        }
-
-        /* Navigation List */
-        .nav-list {
-            list-style-type: none;
-            padding-left: 0;
-            margin: 0;
-        }
-        .nav-list li a {
-            display: block;
-            padding: 8px;
-            text-decoration: none;
-            font-size: 1.1em;
-        }
-        .nav-list li a:hover {
-            background-color: #2c3e50;
-        }
-        
-        /* Stamps! (Blinkies) */
-        .stamp-collection {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            justify-content: center;
-        }
-        .stamp-collection img {
-            /* Classic 88x31 blinkie size */
-            width: 88px;
-            height: 31px;
-            border: 1px solid #2c3e50;
-        }
-
-        /* Shoutbox */
-        #shoutbox-textarea {
-            width: 95%;
-            background: #2c3e50;
-            border: 2px solid #ecf0f1;
-            color: #ecf0f1;
-            font-family: 'Silkscreen', monospace;
-            padding: 5px;
-            height: 60px;
-        }
-        #shoutbox-btn {
-            background-color: #2980b9; /* Blue */
-            color: #fff;
-            border: 3px solid #ecf0f1;
-            padding: 8px;
-            font-family: 'Press Start 2P', monospace;
-            font-size: 0.7em;
-            cursor: pointer;
-            box-shadow: 3px 3px 0px #2c3e50;
-        }
-
-        /* --- Footer --- */
-        #footer {
-            text-align: center;
-            padding: 15px;
-            border-top: 3px solid #ecf0f1;
-            color: #95a5a6;
-            font-size: 0.8em;
-        }
-
-    </style>
+    /* Responsive fallback */
+    @media (max-width:720px) {
+      .layout { flex-direction: column; }
+      .project { width: 100%; }
+    }
+  </style>
 </head>
 <body>
+  <div class="frame">
+    <header>
+      <h1>Kelsey Rook</h1>
+      <p class="tag">Semantic Web Technologies • Knowledge Representation</p>
+      <!-- <div class="retro-marquee">
+        <marquee behavior="scroll" direction="left" scrollamount="4">Welcome — exploring projects, publications, and open data. Last updated: 2025.</marquee>
+      </div> -->
+    </header>
 
-    <div id="wrapper">
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#publications">Publications</a>
+    </nav>
 
-        <!-- Header -->
-        <div id="header">
-            <h1>[Your Name]'s Research Lair</h1>
-        </div>
+    <div class="layout">
+      <main class="left">
+        <section id="about">
+          <h2>About</h2>
+          <p>
+            I am a PhD student studying how dialogue representation can enhance machine understanding of human communication. My research combines semantic web technologies, knowledge representation, and natural language processing.
+        </section>
 
-        <!-- Marquee Bar -->
-        <div class="marquee-bar">
-            <marquee behavior="scroll" direction="left" scrollamount="4">
-                ** WELCOME TO MY SITE! ** Last updated: [Date] ** Currently working on [Your Task] ** This site is best viewed on Netscape Navigator 4.0 (just kidding) **
-            </marquee>
-        </div>
-
-        <!-- Main Content Area -->
-        <div id="container">
-
-            <!-- Left Column: Main Content -->
-            <div id="main-content">
-
-                <!-- About Me Box -->
-                <div class="box" id="about">
-                    <div class="box-header">--[ About Me ]--</div>
-                    <div class="box-content">
-                        <p>Hey! I'm [Your Name], a PhD student at [Your University].</p>
-                        <p>My research is in [Your Field], and I focus on [Your specific research topic].</p>
-                        <p>I made this site to look like the ones I grew up with. It's a fun way to host my projects and CV. When I'm not coding or reading papers, I'm probably [Hobby 1] or [Hobby 2].</p>
-                    </div>
-                </div>
-
-                <!-- Projects Box -->
-                <div class="box" id="projects">
-                    <div class="box-header">--[ Projects ]--</div>
-                    <div class="box-content">
-                        <ul class="project-list">
-                            <li>
-                                <h3>>> Project Title 1</h3>
-                                <p>A short description of your main dissertation work or a key paper. Explain the "what" and "why" in simple terms.</p>
-                                <a href="[link-to-paper]">Read Paper</a> | <a href="[link-to-github]">View Code</a>
-                            </li>
-                            <li>
-                                <h3>>> Project Title 2</h3>
-                                <p>A description of a secondary project. Maybe a tool you built, a web app, or a data analysis.</p>
-                                <a href="[link-to-project]">Live Demo</a>
-                            </li>
-                            <li>
-                                <h3>>> Project Title 3</h3>
-                                <p>A fun side project! This is a great place to show off your personality.</p>
-                                <a href="[link-to-it]">Check it out</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- CV Box -->
-                <div class="box" id="cv">
-                    <div class="box-header">--[ C.V. / Resume ]--</div>
-                    <div class="box-content" style="text-align: center;">
-                        <p>Want the full academic breakdown? You can download my CV right here.</p>
-                        <a href="[LINK_TO_YOUR_CV.PDF]" class="cv-button" target="_blank">Download_CV.pdf</a>
-                    </div>
-                </div>
-
-                <!-- Shoutbox (Guestbook) -->
-                <div class="box" id="guestbook">
-                    <div class="box-header">--[ Shoutbox ]--</div>
-                    <div class="box-content" style="text-align: center;">
-                        <p>Leave a message! (Note: This is just for fun and doesn't actually save.)</p>
-                        <textarea id="shoutbox-textarea" placeholder="Type here..."></textarea>
-                        <br><br>
-                        <button id="shoutbox-btn" onclick="alert('Message sent to the void! Thanks for signing!')">!! SUBMIT !!</button>
-                    </div>
-                </div>
-
+        <section id="projects">
+          <h2>Selected Projects</h2>
+          <div class="projects">
+            <div class="project">
+              <!-- <img src="https://via.placeholder.com/420x240.png?text=Project+One" alt="Project One thumbnail"> -->
+              <div class="meta"><strong>Knowledge Graph Construction from Dialogue:</strong> More info coming soon!</div>
             </div>
 
-            <!-- Right Column: Sidebar -->
-            <div id="sidebar">
-
-                <!-- Profile Box -->
-                <div class="box">
-                    <div class="box-header">--[ User Info ]--</div>
-                    <div class="box-content">
-                        <img id="profile-pic" src="https://placehold.co/200x200/8e44ad/f1c40f?text=Your+Pixel+Avatar" alt="Your pixel art avatar or photo">
-                        <br><br>
-                        <div class="profile-stat"><strong>User:</strong> [Your Name]</div>
-                        <div class="profile-stat"><strong>Status:</strong> Online</div>
-                        <div class="profile-stat"><strong>Field:</strong> [Your Field]</div>
-                        <div class="profile-stat"><strong>Mood:</strong> Caffeinated</div>
-                    </div>
-                </div>
-
-                <!-- Navigation Box -->
-                <div class="box">
-                    <div class="box-header" id="nav-header">--[ Navigate ]--</div>
-                    <div class="box-content" style="padding: 0;">
-                        <ul class="nav-list">
-                            <li><a href="#about">>> About Me</a></li>
-                            <li><a href="#projects">>> Projects</a></li>
-                            <li><a href="#cv">>> C.V.</a></li>
-                            <li><a href="#guestbook">>> Shoutbox</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Links Box -->
-                <div class="box">
-                    <div class="box-header">--[ Links ]--</div>
-                    <div class="box-content">
-                        <ul class="nav-list">
-                            <li><a href="[github-url]">>> GitHub</a></li>
-                            <li><a href="[scholar-url]">>> Google Scholar</a></li>
-                            <li><a href="[linkedin-url]">>> LinkedIn</a></li>
-                            <li><a href="[lab-url]">>> My Lab</a></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Stamps Box -->
-                <div class="box">
-                    <div class="box-header">--[ Stamps ]--</div>
-                    <div class="box-content stamp-collection">
-                        <!-- These are placeholders for 88x31 "blinkies" -->
-                        <img src="https://placehold.co/88x31/e74c3c/ffffff?text=PhD+in+Progress" alt="PhD in Progress">
-                        <img src="https://placehold.co/88x31/2ecc71/000000?text=Powered+by+Coffee" alt="Powered by Coffee">
-                        <img src="https://placehold.co/88x31/3498db/ffffff?text=HTML+Is+Fun!" alt="HTML is Fun">
-                        <img src="https://placehold.co/88x31/f1c40f/000000?text=SCIENCE!" alt="Science!">
-                        <img src="https://placehold.co/88x31/9b59b6/ffffff?text=Pixel+Art+Fan" alt="Pixel Art Fan">
-                        <img src="https://placehold.co/88x31/1abc9c/000000?text=Made+with+<3" alt="Made with love">
-                    </div>
-                </div>
-
+            <div class="project">
+              <!-- <img src="https://via.placeholder.com/420x240.png?text=Project+Two" alt="Project Two thumbnail"> -->
+              <div class="meta"><strong>Psychometric Ontology of Experiences and Measures (POEM):</strong> POEM is an ontology to support the creation and reuse of psychometric instruments, particularly questionnaires. <br> Learn more <a href="https://tetherless-world.github.io/POEM/">here</a> <br> See it in use <a href="https://rcads.ucla.edu/">here</a> </div>
             </div>
 
-        </div>
+            <!-- <div class="project">
+              <img src="https://via.placeholder.com/420x240.png?text=Open+Dataset" alt="Open dataset thumbnail">
+              <div class="meta"><strong>Open Dataset:</strong> Reproducible dataset & analysis scripts — <a href="/data/">Download</a></div>
+            </div> -->
 
-        <!-- Footer -->
-        <div id="footer">
-            (c) 2025 [Your Name] | All your base are belong to us.
-        </div>
+            <!-- <div class="project">
+              <img src="https://via.placeholder.com/420x240.png?text=Tooling" alt="Tooling thumbnail">
+              <div class="meta"><strong>Tooling:</strong> Visualization toolkit for networked media — <a href="/tools/">Explore</a></div>
+            </div> -->
+          </div>
+        </section>
 
+        <section id="publications">
+          <h2>Publications & Preprints</h2>
+          <ul>
+            <li><strong>2025</strong> — Title A. Journal/Conference. <a href="/pubs/2025-title-a.pdf">PDF</a></li>
+            <li><strong>2024</strong> — Title B. Journal/Conference. <a href="/pubs/2024-title-b.pdf">PDF</a></li>
+            <li><strong>Preprints & Posters:</strong> <a href="/pubs/">Full list</a></li>
+          </ul>
+        </section>
+
+        
+
+        <!-- <section id="teaching">
+          <h2>Teaching & Mentoring</h2>
+          <p>
+            TA, ran recitations???? i dunno man
+          </p>
+        </section> -->
+      </main>
+
+      <aside class="right">
+        <section id="cv">
+          <h2>CV</h2>
+          <p>Download my CV (PDF):</p>
+          <p><a href="cv_rook_F25.pdf" download>Download</a></p>
+          <p><a href="/assets/KelseyRook_CV.pdf" download>View in new tab</a></p>
+        </section>
+
+        <section id="contact">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:rookk@rpi.edu">rookk@rpi.edu</a></p>
+        </section>
+
+        <!-- <section id="extras">
+          <h2>Extras</h2>
+          <p><a href="/resume.txt">Plain-text resume</a></p>
+          <p><span class="blink">New:</span> idk</p> -->
+        </section>
+      </aside>
     </div>
 
-    <!-- 
-        Note: No JavaScript is needed for the navigation,
-        since the <a href="#id"> links will automatically scroll
-        the page to the <div> with the matching id.
-        This is a very classic way to build a one-page site!
-    -->
-
+    <footer>
+      <p>Last updated: October 26, 2025</p>
+    </footer>
+  </div>
 </body>
 </html>
-
