@@ -92,6 +92,13 @@
     .project img { width: 100%; height: auto; display:block; border:1px solid #d0e3ff; }
     .meta { font-size: 12px; color: #06325a; margin-top: 6px; }
 
+    .paper {
+      width: calc(100% - 20px);
+      border: 2px solid #dbeeff;
+      padding: 8px;
+      background: linear-gradient(#ffffff,#f6fbff);
+    }
+
     .retro-marquee {
       margin: 8px 0 14px;
       padding: 6px;
@@ -174,15 +181,53 @@
         </section>
 
         <section id="publications">
-          <h2>Publications & Preprints</h2>
-          <ul>
-            <li><strong>2025</strong> — Title A. Journal/Conference. <a href="/pubs/2025-title-a.pdf">PDF</a></li>
-            <li><strong>2024</strong> — Title B. Journal/Conference. <a href="/pubs/2024-title-b.pdf">PDF</a></li>
-            <li><strong>Preprints & Posters:</strong> <a href="/pubs/">Full list</a></li>
-          </ul>
+          <h2>Publications</h2>
+            <div class="paper">
+              <p class="title"><strong>Towards an Ontology of Psychometric Measures</strong></p>
+              <p class="authors">K Rook, H Santos, BF Chorpita, MS Sprung, P Pinheiro, DL McGuinness; presented by H Santos</p>
+              <p class="venue">The Healthcare and Life Sciences Symposium (HCLS), co-located with The 2024 Knowledge Graph Conference (KGC), 2024</p>
+              <div class="actions" role="toolbar" aria-label="publication actions">
+                <!-- <a class="btn" href="https://example.org/paper.pdf" target="_blank" rel="noopener noreferrer">View Paper</a> -->
+                <!-- If you have slides, set the href; leaving href empty will hide the button via CSS -->
+                <a class="btn ghost" href="https://dspace.rpi.edu/server/api/core/bitstreams/07b05c31-c710-45ff-8c4d-47c3cdb7c897/content" target="_blank" rel="noopener noreferrer">View Slides</a>
+                <details>
+                  <summary class="btn small" aria-haspopup="true">Abstract</summary>
+                  <div class="bib-area">
+                    <p style="margin:8px 0 0 0">This is an example abstract. Replace this paragraph with the paper abstract. The Abstract panel is implemented with a <code>&lt;details&gt;</code> element so no JavaScript is required.</p>
+                  </div>
+                </details>
+
+                <details>
+                  <summary class="btn small" aria-haspopup="true">BibTeX</summary>
+                  <div class="bib-area">
+                    <!-- readonly textarea so users can easily select and copy the BibTeX without JS -->
+                    <label class="muted" for="bib-1" style="display:block;margin-bottom:6px">Select and copy the BibTeX below:</label>
+                    <textarea id="bib-1" class="bib" rows="6" readonly>@inproceedings{rook2025example,
+        title = {Example Paper Title: A Concise, Clear Title},
+        author = {Rook, Kelsey and Researcher, A. and Collaborator, C.},
+        booktitle = {Conference Name},
+        year = {2025},
+        url = {https://example.org/paper.pdf}
+      }</textarea>
+                  </div>
+                </details>
+              </div>
+            </div>
         </section>
 
-        
+        <section id="publications">
+          <h2>Presentations</h2>
+            <div class="paper">
+              <p class="title"><strong>Towards an Ontology of Psychometric Measures</strong></p>
+              <p class="authors">K Rook, H Santos, BF Chorpita, MS Sprung, P Pinheiro, DL McGuinness; presented by H Santos</p>
+              <p class="venue">The Healthcare and Life Sciences Symposium (HCLS), co-located with The 2024 Knowledge Graph Conference (KGC), 2024</p>
+              <div class="actions" role="toolbar" aria-label="publication actions">
+                <!-- <a class="btn" href="https://example.org/paper.pdf" target="_blank" rel="noopener noreferrer">View Paper</a> -->
+                <!-- If you have slides, set the href; leaving href empty will hide the button via CSS -->
+                <a class="btn ghost" href="https://dspace.rpi.edu/server/api/core/bitstreams/07b05c31-c710-45ff-8c4d-47c3cdb7c897/content" target="_blank" rel="noopener noreferrer">View Slides</a>
+              </div>
+            </div>
+        </section>
 
         <!-- <section id="teaching">
           <h2>Teaching & Mentoring</h2>
