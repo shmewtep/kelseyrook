@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Publications — Kelsey Rook</title>
+  <style>
+    /* Match visual style from index.html (retro, web-1.0 inspired) */
+    body {
+      background: repeating-linear-gradient(45deg, #f3f7ff 0 8px, #e8f0ff 8px 16px);
+      color: #0b2545;
+      font-family: "Courier New", Courier, monospace;
+      margin: 0;
+      padding: 24px;
+    }
+
+    .frame {
+      max-width: 980px;
+      margin: 0 auto;
+      border: 6px groove #cfe0ff;
+      background: #ffffff;
+      padding: 18px;
+      box-shadow: 6px 6px 0 rgba(11,37,69,0.08);
+    }
+
+    header { text-align: center; margin-bottom: 12px; }
+    header h1 { margin: 6px 0; font-size: 28px; letter-spacing: 1px; }
+    header p.tag { margin: 0; color: #204a87; font-size: 13px; }
+
+    nav { margin: 12px 0; text-align: center; }
+    nav a { display: inline-block; margin: 4px 8px; padding: 6px 10px; background: linear-gradient(#eaf3ff,#d8eaff); border: 2px outset #b8d0ff; color: #03306a; text-decoration: none; font-weight: bold; }
+
+    main { display:block; }
+    .pub-card { border: 2px solid #dbeeff; padding: 12px; background: linear-gradient(#ffffff,#f6fbff); margin-bottom: 14px; }
+    .pub-meta { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; }
+    .pub-meta .left { flex:1 }
+    h3.title { margin:0 0 6px 0; font-size:1.15rem }
+    p.authors { margin:0; color:#06325a; font-size:13px }
+    .venue { color:#06325a; margin-top:6px; font-size:13px }
+
+    .actions { margin-top:12px; display:flex; gap:8px; flex-wrap:wrap }
+    .btn { background: linear-gradient(#eaf3ff,#d8eaff); border:2px outset #b8d0ff; color:#03306a; text-decoration:none; padding:8px 12px; border-radius:4px; font-weight:bold }
+    .btn.small { padding:6px 8px; font-size:0.92rem }
+    .btn.ghost { background:#fff; border:2px solid #dbeeff }
+    .btn:focus { outline: 3px solid rgba(11,37,69,0.12); outline-offset:2px }
+
+    /* details/summary styled like a button */
+    details { margin-top:10px; background:#fbfeff; padding:10px; border-radius:6px; border:1px dashed #e6f0ff }
+    summary { list-style:none; cursor:pointer; display:inline-block; padding:6px 10px; background:linear-gradient(#fff,#f2fbff); border:2px outset #cfe6ff; border-radius:6px; font-weight:bold }
+    summary::-webkit-details-marker { display:none }
+    details[open] summary { background:linear-gradient(#dff0ff,#eaf8ff) }
+
+    .bib-area { margin-top:8px }
+    textarea.bib { width:100%; font-family:monospace; font-size:0.95rem; border:1px solid #d0e4ff; padding:8px; border-radius:6px; background:#fff; }
+
+    /* Hide slides button when href is empty (CSS-only) */
+    a[href=""] { display:none }
+
+    @media (max-width:720px) { .pub-meta{flex-direction:column} }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header>
+      <h1>Kelsey Rook</h1>
+      <p class="tag">Publications & Preprints • Semantic Web & Knowledge Representation</p>
+    </header>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#publications">Publications</a>
+    </nav>
+
+    <main>
+      <!-- Single publication card — duplicate this block for each paper -->
+      <article class="pub-card">
+        <div class="pub-meta">
+          <div class="left">
+            <h3 class="title">Example Paper Title: A Concise, Clear Title</h3>
+            <p class="authors">K. Rook, A. Researcher, C. Collaborator</p>
+            <div class="venue">Conference Name • 2025</div>
+          </div>
+          <div class="right" style="color:#204a87;font-weight:bold">• Honorable Mention</div>
+        </div>
+
+        <div class="actions" role="toolbar" aria-label="publication actions">
+          <a class="btn" href="https://example.org/paper.pdf" target="_blank" rel="noopener noreferrer">View Paper</a>
+          <!-- If you have slides, set the href; leaving href empty will hide the button via CSS -->
+          <a class="btn ghost" href="" target="_blank" rel="noopener noreferrer">View Slides</a>
+          <!-- details elements provide native keyboard-accessible collapse/expand with no JS -->
+          <details>
+            <summary class="btn small" aria-haspopup="true">Abstract</summary>
+            <div class="bib-area">
+              <p style="margin:8px 0 0 0">This is an example abstract. Replace this paragraph with the paper abstract. The Abstract panel is implemented with a <code>&lt;details&gt;</code> element so no JavaScript is required.</p>
+            </div>
+          </details>
+
+          <details>
+            <summary class="btn small" aria-haspopup="true">BibTeX</summary>
+            <div class="bib-area">
+              <!-- readonly textarea so users can easily select and copy the BibTeX without JS -->
+              <label class="muted" for="bib-1" style="display:block;margin-bottom:6px">Select and copy the BibTeX below:</label>
+              <textarea id="bib-1" class="bib" rows="6" readonly>@inproceedings{rook2025example,
+  title = {Example Paper Title: A Concise, Clear Title},
+  author = {Rook, Kelsey and Researcher, A. and Collaborator, C.},
+  booktitle = {Conference Name},
+  year = {2025},
+  url = {https://example.org/paper.pdf}
+}</textarea>
+            </div>
+          </details>
+        </div>
+      </article>
+
+      <p style="color:#06325a;max-width:760px;margin:8px 0 0 0">Duplicate the &lt;article class="pub-card"&gt; block for more publications. If you want the slides button to appear, set its <code>href</code> to a valid URL; leaving it empty will hide it automatically.</p>
+    </main>
+
+    <footer style="margin-top:14px;text-align:center;color:#174a6b;border-top:1px dotted #d1e7ff;padding-top:10px">Last updated: October 27, 2025</footer>
+  </div>
+</body>
+</html>
